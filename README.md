@@ -48,55 +48,37 @@ step-6 Run the program.
 
 
 **PROGRAM**
-Program for flipflops and verify its truth table in quartus using Verilog programming.
+
 Developed by : Lidison sham M 
 RegisterNumber:212224040171
 ```
-```verilog
-module JKFLIPFLOP(q, qb,j,k,clock,reset);
-    input j,k,clock,reset;
-    output reg q, qb;
-	 
-always @ (posedge (clock))
-
-    begin 
-        if (!reset)
-            begin
-               q <= q;
-               qb <=qb;
-            end   
-        
-else
-   begin
-	   if(j==0 && k==0)
-		   begin
-			q<=q;
-			qb<=qb;
-			end
-		else if(j!=k)
-		   begin
-			q<=j;
-			qb<=k;
-			end
-		else if(j==1 && k==1)
-		    begin
-			 q<=~q;
-			 qb<=~qb;
-			 end
-	end
-end	
+module jk(j,k,clk,q,qbar);
+input j,k,clk;
+output reg q,qbar;
+initial 
+begin
+q=1'b0;
+q=1'b1;
+end
+always@(posedge clk)
+begin
+q<=(j&~q)|(~k&q);
+qbar<=~q;
+end
 endmodule
+*/
+```
 
 **RTL LOGIC FOR FLIPFLOPS**
-![Screenshot 2025-05-20 123352](https://github.com/user-attachments/assets/1739dba0-f45c-457f-89fa-b0ec764c74bc)
-
+![image](https://github.com/user-attachments/assets/33b737b9-689a-4473-9fad-fe06ac30abe8)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
-![Screenshot 2025-05-20 123331](https://github.com/user-attachments/assets/58edac0a-8452-4bfc-98cb-6b5d192535ce)
+![image](https://github.com/user-attachments/assets/c449452a-d35b-45ef-a469-9a29d855cd8f)
+
 
 
 
 **RESULTS**
 
-Thus,the code executed successfully.
+Implement JK flipflop using verilog and validating their functionality using their functional table are verified in Quartus II using verilog programming.
